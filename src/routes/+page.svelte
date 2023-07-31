@@ -8,14 +8,9 @@
   let displayHeight: number;
 
   onMount(() => {
-    // wait for 2 sec
     setTimeout(() => {
       generate();
     }, 1000);
-    // // setinnterval to call generate every 5 sec
-    // setInterval(() => {
-    //   generate();
-    // }, 50);
   });
 
   $: if (canvas) {
@@ -24,98 +19,19 @@
     displayHeight = canvas?.height;
   }
 
-  // function generate() {
-  //   if (context == null) return;
-  //   context.clearRect(0, 0, displayWidth, displayHeight);
-  //   let centerX, centerY;
-  //   let r, g, b, a;
-  //   let color;
-  //   let lineW;
-  //   let maxRad, minRad;
-  //   let phase;
-
-  //   maxRad = (0.5 * displayWidth) / 2; // Radius is now a quarter of canvas width
-  //   minRad = 0.88 * maxRad;
-
-  //   centerX = maxRad + maxRad;
-  //   centerY = maxRad + maxRad;
-
-  //   r = 0;
-  //   g = 0;
-  //   b = 0;
-  //   a = 0.5;
-  //   color = "rgba(" + r + "," + g + "," + b + "," + a + ")";
-
-  //   phase = Math.random() * Math.PI * 2;
-
-  //   console.log({
-  //     centerX,
-  //     centerY,
-  //     minRad,
-  //     maxRad,
-  //     phase,
-  //     color,
-  //   });
-
-  //   drawCircle(centerX, centerY, minRad, maxRad, phase, color);
-  // }
-
   function generate() {
     if (context == null) return;
     context.clearRect(0, 0, displayWidth, displayHeight);
     let centerX, centerY;
-    let r, g, b, a;
+
     let color;
-    let lineW;
+
     let minRad, maxRad;
     let phase;
 
     let radials = 100; // set the number of radials you want.
 
-    // for (let i = 0; i < radials; i++) {
-    //   let overlaps = true;
-    //   for (let j = 0; j < attempts; j++) {
-    //     // iteratively try to generate non-overlapping circle
-
-    //     centerX = Math.random() * (displayWidth - 2);
-    //     centerY = Math.random() * (displayHeight - 2);
-    //     let newCircle = { x: centerX, y: centerY };
-    //     let overlap = circleArray.some(
-    //       (existing) =>
-    //         Math.sqrt(
-    //           Math.pow(existing.x - newCircle.x, 2) +
-    //             Math.pow(existing.y - newCircle.y, 2)
-    //         ) <
-    //         existing.r + newCircle.r
-    //     );
-    //     if (!overlap) {
-    //       overlaps = false;
-    //       circleArray.push({ x: centerX, y: centerY });
-    //       break;
-    //     }
-    //   }
-    //   if (!overlaps) {
-    //     r = Math.floor(Math.random() * 192);
-    //     g = Math.floor(Math.random() * 192);
-    //     b = Math.floor(Math.random() * 192);
-    //     a = 0.5;
-    //     color = "rgba(" + r + "," + g + "," + b + "," + a + ")";
-    //     phase = Math.random() * Math.PI * 2;
-    //     maxRad = (0.5 * displayWidth) / 2; // Radius is now a quarter of canvas width
-    //     minRad = 0.88 * maxRad;
-    //     console.log({
-    //       centerX,
-    //       centerY,
-    //       minRad,
-    //       maxRad,
-    //       phase,
-    //       color,
-    //     });
-    //     drawCircle(centerX, centerY, minRad, maxRad, phase, color);
-    //   }
-    // }
     let circleArray: any = [];
-
     for (let i = 0; i < radials; i++) {
       centerX = Math.random() * (displayWidth - 2);
       centerY = Math.random() * (displayHeight - 2);
